@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "37067867609",
+    "firebase_url": "https://iotmqtt-9fd39.firebaseio.com",
+    "project_id": "iotmqtt-9fd39",
+    "storage_bucket": "iotmqtt-9fd39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37067867609:android:1b6d480ebab7b3a3f2c5c8",
+        "android_client_info": {
+          "package_name": "com.example.drag.iotmqtt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37067867609-qk67g3v8jp570vh37cjkkq0apmcj34f2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drag.iotmqtt",
+            "certificate_hash": "ae96cd6c46169556b5819b089fe4b188974443ed"
+          }
+        },
+        {
+          "client_id": "37067867609-s18has2r9b94dne13hm3579brp3ns3o1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPxZ4_cLxzH2ZZsITRW9kY9oGHCfbzOys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37067867609-s18has2r9b94dne13hm3579brp3ns3o1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
