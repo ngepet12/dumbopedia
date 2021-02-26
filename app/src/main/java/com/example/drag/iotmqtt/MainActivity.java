@@ -1,40 +1,23 @@
 package com.example.drag.iotmqtt;
 
-import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.nfc.Tag;
 import android.os.AsyncTask;
-import android.os.Message;
-import android.support.v4.app.INotificationSideChannel;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
+
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.util.TimeFormatException;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -45,19 +28,12 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.internal.wire.MqttOutputStream;
-import org.w3c.dom.Text;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.nio.channels.Channel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.Calendar;
-
-import okio.Options;
 
 public class MainActivity extends AppCompatActivity {
     //init textview
@@ -66,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
     //Connection for Firebase cloud
     private Firebase fconn;
 
-    Button on1, off1, Status, onx2;
+    Button on1, off1, Status, setTime,onx4;
     TextView txv1, ttx, thx, status, xxs;
+    EditText editx;
 
     private static final String DB_URL = "jdbc:mysql://192.168.1.6/coba";
     private static final String USER = "root";
@@ -151,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         nilai = (TextView) findViewById(R.id.nilai);
         status = (TextView) findViewById(R.id.status);
         //open connection
-        fconn = new Firebase("https://iotmqtt-460bc.firebaseio.com/value");
+        fconn = new Firebase("https://iotmqtt-9fd39.firebaseio.com/value");
         //realtime process
 
         fconn.addValueEventListener(new ValueEventListener() {
@@ -159,8 +136,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //ambil nilai field value
                 String value = dataSnapshot.getValue(String.class);
+                value = value.substring(0, value.indexOf('.'));
                 nilai.setText(value);
-                if (Integer.parseInt(value) <= 11) {
+                System.out.println(value);
+                if (Integer.parseInt(value) >= 11) {
                     status.setBackgroundColor(Color.RED);
                     status.setText("Pakan Ikan Habis");
                     status.setTextColor(Color.BLACK);
@@ -195,6 +174,27 @@ public class MainActivity extends AppCompatActivity {
 
         txv1 = findViewById(R.id.ttx);
 
+        onx4 = findViewById(R.id.onx4);
+        Button btn = (Button) findViewById(R.id.onx4);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this ,manual.class));
+
+            }
+        });
+        setTime = findViewById(R.id.button7);
+        Button btnx = (Button) findViewById(R.id.button7);
+        btnx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this ,pakan.class));
+
+            }
+        });
+
+
+
         /*txv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,8 +220,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
         on1 = (Button) findViewById(R.id.onx);
-        onx2 = (Button) findViewById(R.id.onx2);
-        off1 = (Button) findViewById(R.id.ofx);
+        off1 = (Button) findViewById(R.id.button6);
+       setTime = (Button) findViewById(R.id.button7);
         thx = (TextView) findViewById(R.id.txt3);
 
 
@@ -425,11 +425,11 @@ public class MainActivity extends AppCompatActivity {
 
     private class Send extends AsyncTask<String, String, String> {
         String msg = "";
-        String text = ttx.getText().toString();
+        String text = editx.getText().toString();
 
         @Override
         protected void onPreExecute() {
-            ttx.setText("iNSERTING");
+            editx.setText("iNSERTING");
         }
 
         @Override
