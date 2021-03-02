@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 value = value.substring(0, value.indexOf('.'));
                 nilai.setText(value);
                 System.out.println(value);
-                if (Integer.parseInt(value) >= 11) {
+                if (Integer.parseInt(value) >= 30) {
                     status.setBackgroundColor(Color.RED);
                     status.setText("Pakan Ikan Habis");
                     status.setTextColor(Color.BLACK);

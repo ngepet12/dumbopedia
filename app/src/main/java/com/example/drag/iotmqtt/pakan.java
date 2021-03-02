@@ -28,6 +28,9 @@ import java.util.UUID;
 public class pakan extends AppCompatActivity {
 
     private TimePickerDialog timePickerDialog;
+    private TimePickerDialog tp2;
+    private TimePickerDialog tp3;
+    private TimePickerDialog tp4;
     private TextView tvTimeResult,tvTimeResult2;
     private Button button,button2;
 
@@ -106,6 +109,8 @@ public class pakan extends AppCompatActivity {
                         calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this));
                 timePickerDialog.show();
     }
+
+
 
 
 }

@@ -4,15 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="1440dp"
-        android:height="90dp"
-        android:background="@color/design_default_color_primary_dark" />
 
 
     <Button
@@ -20,14 +14,17 @@
         android:layout_width="139dp"
         android:layout_height="55dp"
 
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="540dp"
+        android:layout_marginEnd="259dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:text="Buka Manual"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:visibility="invisible"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ttx"
@@ -122,10 +119,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="482dp"
+        android:layout_marginEnd="307dp"
         android:layout_marginBottom="129dp"
         android:text="Button"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
